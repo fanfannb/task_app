@@ -99,6 +99,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-bootstrap-views (1.1.0)
     digest (3.1.0)
     erubi (1.10.0)
     execjs (2.8.1)
@@ -256,6 +257,7 @@ DEPENDENCIES
   capybara
   debug
   devise (~> 4.8, >= 4.8.1)
+  devise-bootstrap-views (~> 1.0)
   importmap-rails
   jbuilder
   jquery-rails
