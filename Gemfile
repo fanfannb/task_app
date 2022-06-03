@@ -24,6 +24,12 @@ gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
 
+gem 'devise', '~> 4.8', '>= 4.8.1'
+gem 'bootstrap-sass', '~> 3.4.1'
+gem 'sassc-rails', '>= 2.1.0'
+gem 'jquery-rails'
+gem 'simple_form', '~> 5.1'
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
@@ -70,5 +76,3 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
-
-gem 'devise', '~> 4.8', '>= 4.8.1'
