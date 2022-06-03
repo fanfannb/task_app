@@ -101,6 +101,8 @@ GEM
       warden (~> 1.2.3)
     devise-bootstrap-views (1.1.0)
     digest (3.1.0)
+    enum_help (0.0.19)
+      activesupport (>= 3.0.0)
     erubi (1.10.0)
     execjs (2.8.1)
     ffi (1.15.5)
@@ -258,6 +260,7 @@ DEPENDENCIES
   debug
   devise (~> 4.8, >= 4.8.1)
   devise-bootstrap-views (~> 1.0)
+  enum_help
   importmap-rails
   jbuilder
   jquery-rails

@@ -13,7 +13,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/new
   def new
-    @task = Task.new
+    @task = Task.new(status: 'todo')
   end
 
   # GET /tasks/1/edit

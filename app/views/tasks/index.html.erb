@@ -1,6 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Tasks</h1>
+<% title = params[:type] == 'my' ? 'My Tasks' : 'All Tasks' %>
+<h1><%= title %></h1>
 
 <div id="tasks">
   <% @tasks.each do |task| %>
