@@ -7,11 +7,17 @@
     <%= f.input :content %>
     <%= f.label :deadline %>
     <%= f.datetime_field :deadline, class: 'form-control' %>
-    <%= f.input :user_id, collection: User.all %>
     <%= f.input :status %>
   </div>
 
   <div class="form-actions">
     <%= f.button :submit %>
+    <%= link_to 'Back', tasks_path, class: 'btn btn-default' %>
   </div>
 <% end %>
+
+<script>
+  <% if params[:action] == 'new' %>
+    $("#task_status option[value='done']").remove();
+  <% end %>
+</script>

@@ -1,10 +1,15 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
+  before_action :set_task, only: %i[ show edit update destroy ]
+  before_action :check_task_auth, only: %i[ edit update destroy ]
 
   # GET /tasks or /tasks.json
   def index
-    @tasks = Task.all
+    if params[:type] == 'my'
+      @tasks = current_user.tasks
+    else
+      @tasks = Task.all
+    end
   end
 
   # GET /tasks/1 or /tasks/1.json
@@ -38,7 +43,7 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1 or /tasks/1.json
   def update
     respond_to do |format|
-      if @task.update(task_params)
+      if @task.update!(task_params)
         format.html { redirect_to task_url(@task), notice: "Task was successfully updated." }
         format.json { render :show, status: :ok, location: @task }
       else
@@ -62,6 +67,10 @@ class TasksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_task
       @task = Task.find(params[:id])
+    end
+
+    def check_task_auth
+      redirect_to tasks_path, notice: 'no auth' and return if @task.creator_id != current_user.id
     end
 
     # Only allow a list of trusted parameters through.
