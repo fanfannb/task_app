@@ -1,14 +1,13 @@
 <p style="color: green"><%= notice %></p>
 
 <% title = params[:type] == 'my' ? 'My Tasks' : 'All Tasks' %>
-<h1><%= title %></h1>
+<h1 style="margin-left: 15px;"><%= title %></h1>
 
 <div id="tasks">
   <% @tasks.each do |task| %>
-    <%= render task %>
-    <p>
-      <%= link_to "Show this task", task %>
-    </p>
+    <div class="col-md-4">
+      <%= render task %>
+    </div>
   <% end %>
 </div>
 

@@ -1,27 +1,26 @@
-<div id="<%= dom_id task %>">
-  <p>
-    <strong>Title:</strong>
-    <%= task.title %>
-  </p>
+<div class="panel panel-success">
+  <div class="panel-heading">Task <%= task.id %></div>
+  <div class="panel-body">
+    <p>
+      <strong><%= task.title %></strong>
+    </p>
 
-  <p>
-    <strong>Content:</strong>
-    <%= task.content %>
-  </p>
+    <p>
+      <strong>Deadline:</strong>
+      <%= task.deadline.to_date %>
+    </p>
 
-  <p>
-    <strong>Deadline:</strong>
-    <%= task.deadline %>
-  </p>
+    <p>
+      <strong>User:</strong>
+      <%= task.user.name %>
+    </p>
 
-  <p>
-    <strong>User:</strong>
-    <%= task.user_id %>
-  </p>
-
-  <p>
-    <strong>Status:</strong>
-    <%= task.status %>
-  </p>
-
+    <p>
+      <strong>Status:</strong>
+      <%= task.status %>
+    </p>
+    <%= link_to 'Detail', task, class: 'btn btn-default' %>
+    <%= link_to 'Edit', edit_task_path(task), class: 'btn btn-info' %>
+    <%= link_to "Destroy", task, method: :delete, class: 'btn btn-danger' %>
+  </div>
 </div>
