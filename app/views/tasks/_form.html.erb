@@ -7,7 +7,7 @@
     <%= f.input :title %>
     <%= f.input :content %>
     <%= f.input :deadline %>
-    <%= f.input :user_id %>
+    <%= f.input :user_id, collection: User.all %>
     <%= f.input :status %>
   </div>
 
