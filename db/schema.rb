@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_03_070305) do
     t.text "content"
     t.datetime "deadline"
     t.integer "user_id"
-    t.integer "status"
+    t.integer "status", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "creator_id"
