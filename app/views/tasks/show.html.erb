@@ -1,8 +1,8 @@
 <p style="color: green"><%= notice %></p>
-<h1>Configure</h1>
+<h1>アサイン</h1>
 <div class="row">
   <div class="col-md-6">
-    <p>Currently Assigned user</p>
+    <p>現在アサインされているユーザ</p>
     <p><%= @task.user&.name || 'No Assign' %></p>
     <% if @task.creator_id == current_user.id %>
       <%= button_tag 'Assign', class: 'btn btn-success submit-assign' %>
@@ -11,7 +11,7 @@
   <% if @task.creator_id == current_user.id %>
     <div class="col-md-6">
       <%= simple_form_for @task do |f| %>
-        <%= f.input :user_id, collection: User.all, label: 'New Assigned user' %>
+        <%= f.input :user_id, collection: User.all, label: '新しくアサインするユーザ' %>
         <%= f.button :submit, style: 'display: none' %>
       <% end %>
     </div>
@@ -25,12 +25,12 @@
   </p>
 
   <p>
-    <strong>Deadline:</strong>
+    <strong>期限：</strong>
     <%= @task.deadline.to_date %>
   </p>
 
   <p>
-    <strong>Status:</strong>
+    <strong>ステーター：</strong>
     <%= @task.status %>
   </p>
 </div>
