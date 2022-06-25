@@ -13,7 +13,7 @@
     <%= f.label(:status, "未対応") %>
     <%= f.radio_button(:status, "対応中") %>
     <%= f.label(:status, "対応中") %>
-    <% if params[:action] == 'new' %>
+    <% if params[:action] != 'new' %>
       <%= f.radio_button(:status, "完了") %>
       <%= f.label(:status, "完了") %>
     <% end %>
@@ -24,9 +24,3 @@
     <%= link_to 'Back', tasks_path, class: 'btn btn-default' %>
   </div>
 <% end %>
-
-<script>
-  <% if params[:action] == 'new' %>
-    $("#task_status option[value='done']").remove();
-  <% end %>
-</script>
