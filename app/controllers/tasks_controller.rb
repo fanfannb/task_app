@@ -10,6 +10,9 @@ class TasksController < ApplicationController
     else
       @tasks = Task.all
     end
+
+    @q = @tasks.ransack(params[:q])
+    @tasks = @q.result(distinct: true)
   end
 
   # GET /tasks/1 or /tasks/1.json

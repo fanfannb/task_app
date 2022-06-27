@@ -28,3 +28,32 @@ Task.all.pluck(:id)
 Task.all.ids
 Task.all.map { |task| task.title }
 Task.all.pluck(:title)
+
+user.tasks.create(title: 'task_c', content: 'task_c_content', deadline: Time.now)
+user.tasks.where('deadline < ?', Time.now)
+user.tasks.where(deadline: Time.now.beginning_of_day..Time.now.end_of_day)
+user.tasks.where('deadline > ?', Time.now+1.week)
+user.tasks.where('deadline > ?', Time.now+1.month)
+user.tasks.where("title LIKE '%作业'")
+user.tasks.done
+# 重复的
+user.tasks.first.updated_at
+user.tasks.last.title
+user.tasks.todo.update_all(status: 'doing')
+
+user.tasks.each_with_index do |task, index|
+  task.update(title: "作业委托(#{index})")
+end
+
+Task.all.where(user_id: user.id).update_all(user_id: user_b.id)
+
+Task.last.update(title: 'test')
+
+@task = Task.last
+@task.update(title: 'test')
+
+Task.first.destroy
+
+@task.destroy
+
+Task.where(user_id: user_b.id).destroy_all
