@@ -6,7 +6,7 @@ class TasksController < ApplicationController
   # GET /tasks or /tasks.json
   def index
     if params[:type] == 'my'
-      @tasks = current_user.tasks
+      @tasks = current_user.tasks.where.not(status: '完了')
     else
       @tasks = Task.all
     end
