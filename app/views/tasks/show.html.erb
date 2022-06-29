@@ -16,6 +16,11 @@
     <%= @task.status %>
   </p>
 
+  <p>
+    <strong>担当者：</strong>
+    <%= @task.user&.name %>
+  </p >
+  
   <div>
     <%= link_to '戻る', 'javascript:;', class: 'btn btn-default return' %>
     <% if @task.creator_id == current_user.id %>
