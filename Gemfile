@@ -34,6 +34,7 @@ gem 'simple_form', '~> 5.1'
 gem 'enum_help'
 gem 'devise-bootstrap-views', '~> 1.0'
 gem 'ransack'
+gem 'letter_opener_web'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
