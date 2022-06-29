@@ -26,6 +26,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
+    origin_url
   end
 
   # POST /tasks or /tasks.json
@@ -47,7 +48,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update!(task_params)
-        format.html { redirect_to task_url(@task), notice: "Task was successfully updated." }
+        format.html { redirect_to cookies[:refer] || tasks_path, notice: "Task was successfully updated." }
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -79,5 +80,9 @@ class TasksController < ApplicationController
     # Only allow a list of trusted parameters through.
     def task_params
       params.require(:task).permit(:title, :content, :deadline, :user_id, :status)
+    end
+
+    def origin_url
+      cookies[:refer] = request.referer || tasks_path
     end
 end

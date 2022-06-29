@@ -1,4 +1,4 @@
-<div class="panel <%= Time.now >= task.deadline ? 'panel-danger' : 'panel-success' %>">
+<div class="panel <%= Time.current >= task.deadline ? 'panel-danger' : 'panel-success' %>">
   <div class="panel-heading">タスク <%= task.id %></div>
   <div class="panel-body">
     <p>
