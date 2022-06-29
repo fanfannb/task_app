@@ -1,0 +1,42 @@
+<p style="color: green"><%= notice %></p>
+<h1>アサイン</h1>
+<div class="row">
+  <div class="col-md-6">
+    <p>現在アサインされているユーザ</p>
+    <p><%= @task.user&.name || 'No Assign' %></p>
+    <% if @task.creator_id == current_user.id %>
+      <%= button_tag 'アサインする', class: 'btn btn-success submit-assign' %>
+    <% end %>
+  </div>
+  <% if @task.creator_id == current_user.id %>
+    <div class="col-md-6">
+      <%= simple_form_for @task do |f| %>
+        <%= f.input :user_id, collection: User.all, label: '新しくアサインするユーザ' %>
+        <%= f.button :submit, style: 'display: none' %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<div class="pannel">
+  <h1><%= @task.title %></h1>
+
+  <p>
+    <%= @task.content %>
+  </p>
+
+  <p>
+    <strong>期限：</strong>
+    <%= @task.deadline.to_date %>
+  </p>
+
+  <p>
+    <strong>ステーター：</strong>
+    <%= @task.status %>
+  </p>
+</div>
+
+<script>
+  $('.submit-assign').click(function() {
+    $('form').submit();
+  });
+</script>

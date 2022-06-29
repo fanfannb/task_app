@@ -1,22 +1,4 @@
 <p style="color: green"><%= notice %></p>
-<h1>アサイン</h1>
-<div class="row">
-  <div class="col-md-6">
-    <p>現在アサインされているユーザ</p>
-    <p><%= @task.user&.name || 'No Assign' %></p>
-    <% if @task.creator_id == current_user.id %>
-      <%= button_tag 'アサインする', class: 'btn btn-success submit-assign' %>
-    <% end %>
-  </div>
-  <% if @task.creator_id == current_user.id %>
-    <div class="col-md-6">
-      <%= simple_form_for @task do |f| %>
-        <%= f.input :user_id, collection: User.all, label: '新しくアサインするユーザ' %>
-        <%= f.button :submit, style: 'display: none' %>
-      <% end %>
-    </div>
-  <% end %>
-</div>
 <div class="pannel">
   <h1><%= @task.title %></h1>
 
@@ -33,10 +15,22 @@
     <strong>ステーター：</strong>
     <%= @task.status %>
   </p>
+
+  <div>
+    <%= link_to '返回', 'javascript:;', class: 'btn btn-default return' %>
+    <% if @task.creator_id == current_user.id %>
+      <%= link_to '編集', edit_task_path(@task), class: 'btn btn-info' %>
+      <%= link_to '指派', assign_task_path(@task), class: 'btn btn-success' %>
+    <% end %>
+  </div>
 </div>
 
 <script>
   $('.submit-assign').click(function() {
     $('form').submit();
+  });
+
+  $('.return').click(function() {
+    window.history.back();
   });
 </script>

@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_task, only: %i[ show edit update destroy ]
+  before_action :set_task, only: %i[ show assign edit update destroy ]
   before_action :check_task_auth, only: %i[ edit update destroy ]
 
   # GET /tasks or /tasks.json
@@ -17,6 +17,9 @@ class TasksController < ApplicationController
 
   # GET /tasks/1 or /tasks/1.json
   def show
+  end
+
+  def assign
   end
 
   # GET /tasks/new
