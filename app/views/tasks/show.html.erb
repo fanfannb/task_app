@@ -17,10 +17,10 @@
   </p>
 
   <div>
-    <%= link_to '返回', 'javascript:;', class: 'btn btn-default return' %>
+    <%= link_to '戻る', 'javascript:;', class: 'btn btn-default return' %>
     <% if @task.creator_id == current_user.id %>
       <%= link_to '編集', edit_task_path(@task), class: 'btn btn-info' %>
-      <%= link_to '指派', assign_task_path(@task), class: 'btn btn-success' %>
+      <%= link_to 'アサイン', assign_task_path(@task), class: 'btn btn-success' %>
     <% end %>
   </div>
 </div>
