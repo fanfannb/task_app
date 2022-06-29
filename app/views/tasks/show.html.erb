@@ -5,7 +5,7 @@
     <p>現在アサインされているユーザ</p>
     <p><%= @task.user&.name || 'No Assign' %></p>
     <% if @task.creator_id == current_user.id %>
-      <%= button_tag 'Assign', class: 'btn btn-success submit-assign' %>
+      <%= button_tag 'アサインする', class: 'btn btn-success submit-assign' %>
     <% end %>
   </div>
   <% if @task.creator_id == current_user.id %>
